@@ -3,11 +3,16 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
 import { ApolloLink } from "apollo-link";
+import { Agent } from 'https';
 
 import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import introspectionQueryResultData from '../fragmentTypes';
 
 import clientConfig from './../client-config';
+
+const agent = new Agent({
+	rejectUnauthorized: false,
+});
 
 // Fragment matcher.
 const fragmentMatcher = new IntrospectionFragmentMatcher({
@@ -75,7 +80,8 @@ export const afterware = new ApolloLink( ( operation, forward ) => {
 const client = new ApolloClient({
 	link: middleware.concat( afterware.concat( createHttpLink({
 		uri: clientConfig.graphqlUrl,
-		fetch: fetch
+		fetch: fetch,
+		fetchOptions: { agent: agent }
 	}) ) ),
 	cache: new InMemoryCache( { fragmentMatcher } ),
 });

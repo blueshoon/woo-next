@@ -7,7 +7,8 @@
     "build": "npm run build-fragment && next build",
     "build-fragment": "node schemaQuery.js",
     "start": "next start",
-    "deploy": "npm run build && now"
+    "deploy": "npm run build && now",
+    "test": "jest"
   },
   "author": "Imran Sayed",
   "license": "ISC",
@@ -35,5 +36,18 @@
     "uuid": "^7.0.2",
     "validator": "^13.0.0",
     "woocommerce-api": "^1.4.2"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.2.2",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@testing-library/react": "^11.0.4",
+    "babel-jest": "^26.3.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.4.2",
+    "jsdom": "^16.4.0",
+    "react-test-renderer": "^16.13.1"
   }
 }

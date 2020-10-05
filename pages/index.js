@@ -1,22 +1,15 @@
 import Layout from "../components/Layout";
 import Product from "../components/Product";
 import client from '../components/ApolloClient';
-import ParentCategoriesBlock from "../components/category/category-block/ParentCategoriesBlock";
-import PRODUCTS_AND_CATEGORIES_QUERY from "../queries/product-and-categories";
+import PRODUCTS_QUERY from '../queries/products-only';
 
 const Index = ( props ) => {
 
-	const { products, productCategories } = props;
+	const { products } = props;
 
 	return (
 			<Layout>
-				{/*Categories*/ }
-				<div className="mt-5 text-center">
-					<h2>Categories</h2>
-					<ParentCategoriesBlock productCategories={ productCategories }/>
-				</div>
 				{/*Products*/ }
-
 				<h2 className="mt-5 text-center">Products</h2>
 				<div className="product-container row">
 					{ products.length ? (
@@ -30,11 +23,10 @@ const Index = ( props ) => {
 Index.getInitialProps = async () => {
 
 	const result = await client.query( {
-		query: PRODUCTS_AND_CATEGORIES_QUERY,
+		query: PRODUCTS_QUERY,
 	} );
 
 	return {
-		productCategories: result.data.productCategories.nodes,
 		products: result.data.products.nodes,
 	}
 
