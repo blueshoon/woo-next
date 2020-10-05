@@ -2,6 +2,7 @@ import Link from 'next/link';
 import AddToCartButton from '../components/cart/AddToCartButton';
 import clientConfig from '../client-config';
 import { isEmpty } from 'lodash';
+import React from 'react';
 
 const Product = ( props ) => {
 
@@ -10,8 +11,8 @@ const Product = ( props ) => {
 	return (
 		// @TODO Need to handle Group products differently.
 		undefined !== product && 'GroupProduct' !== product.__typename ? (
-			<div className="col-lg-3 col-md-6 col-sm-12">
-				<h3 className="card-header text-center">
+			<div className="col-sm-12">
+				<h3 className="text-center">
 					{ product.name ? product.name : '' }
 				</h3>
 
@@ -21,7 +22,7 @@ const Product = ( props ) => {
 				>
 					<a>
 						{ !isEmpty( product.image ) ? (
-							<img src={ product.image.sourceUrl } alt="Product image"/>
+							<img src={ product.image.sourceUrl } width="200" alt="Product image"/>
 						) : !isEmpty( clientConfig.productImagePlaceholder ) ? (
 							<img
 								src={ clientConfig.productImagePlaceholder }

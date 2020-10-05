@@ -11,22 +11,12 @@ const Nav = () => {
 			{/*Branding*/}
 			<div className="woo-next-branding">
 				<Link href="/">
-					<a className="">WooNext</a>
+					<a className="">Tonal</a>
 				</Link>
 			</div>
 
 			{/*Navigation menu*/}
 			<div className={ `woo-next-sub-menu-wrap ${ show ? 'show' : '' }` } id="">
-				<ul className="navbar-nav">
-					<li className="nav-item">
-						<Link href="/categories">
-							<a className="nav-link">Categories</a>
-						</Link>
-					</li>
-					<li className="nav-item">
-						<a className="nav-link" href="#">My Account</a>
-					</li>
-				</ul>
 			</div>
 
 		{/*	Cart and Menu button*/}

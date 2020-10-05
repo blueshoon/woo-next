@@ -5,6 +5,10 @@ a:hover {
 	text-decoration: none;
 }
 
+.bg-primary {
+	background-color: #000000 !important;
+}
+
 .content-wrap {
 	height: 84vh;
 }
@@ -49,7 +53,7 @@ button.woo-next-large-black-btn {
 
 /* Menu Button */
 .woo-next-menu-btn {
-	background-color: #2C3E50;
+	background-color: #000000;
 	border: none;
 }
 
@@ -67,7 +71,7 @@ button.woo-next-large-black-btn {
 	right: 0;
 	z-index: 1;
 	width: 100%;
-	background-color: #2C3E50;
+	background-color: #000000;
 }
 
 /* Show Submenu */
@@ -93,7 +97,7 @@ button.woo-next-large-black-btn {
 }
 
 .footer {
-	background-color: #2C3E50;
+	background-color: #000000;
 	padding: 14px 42px;
 	display: flex;
 	justify-content: space-between;
@@ -207,7 +211,7 @@ button.woo-next-large-black-btn {
 		max-height:unset;
 		top: unset;
 		width: 100%;
-		background-color: #2C3E50;
+		background-color: #000000;
 		display: flex;
 		padding-left: 24px;
 	}
@@ -242,7 +246,10 @@ button.woo-next-large-black-btn {
 }
 
 .product-container img {
-	width: 100%;
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
 }
 
 .woo-next-single {
