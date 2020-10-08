@@ -7,6 +7,7 @@ import { Agent } from 'https';
 
 import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import introspectionQueryResultData from '../fragmentTypes';
+import { resolvers, typeDefs } from '../resolvers/resolvers';
 
 import clientConfig from './../client-config';
 
@@ -76,13 +77,25 @@ export const afterware = new ApolloLink( ( operation, forward ) => {
 	} );
 } );
 
+const authLink = new ApolloLink((operation, forward) => {
+	// const token = localStorage.getItem('token');
+
+	operation.setContext({
+		headers: {
+			// authorization: `Bearer ${token}`,
+		}
+	})
+})
+
 // Apollo GraphQL client.
 const client = new ApolloClient({
-	link: middleware.concat( afterware.concat( createHttpLink({
+	link: authLink.concat (middleware.concat( afterware.concat( createHttpLink({
 		uri: clientConfig.graphqlUrl,
 		fetch: fetch,
 		fetchOptions: { agent: agent }
-	}) ) ),
+	}) ) ) ),
+	typeDefs,
+	resolvers,
 	cache: new InMemoryCache( { fragmentMatcher } ),
 });
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import { AppProvider } from "./context/AppContext";
 import Header from "./Header";
@@ -8,6 +9,7 @@ import { ApolloProvider } from 'react-apollo';
 import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks';
 
 const Layout = ( props ) => {
+
 	return (
 		<AppProvider>
 			<ApolloProvider client={ client }>

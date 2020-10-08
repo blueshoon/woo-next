@@ -7,6 +7,8 @@ export const AppContext = React.createContext([
 export const AppProvider = ( props ) => {
 
 	const [ cart, setCart ] = useState( null );
+	const [hasToken, setHasToken] = useState( false );
+	const [token, setToken] = useState( "" );
 
 	useEffect( () => {
 
@@ -22,7 +24,7 @@ export const AppProvider = ( props ) => {
 	}, [] );
 
 	return (
-		<AppContext.Provider value={ [ cart, setCart ] }>
+		<AppContext.Provider value={ [ cart, setCart, hasToken, setHasToken, token, setToken ] }>
 			{ props.children }
 		</AppContext.Provider>
 	);
